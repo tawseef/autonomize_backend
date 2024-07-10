@@ -10,16 +10,18 @@ async function handleGetRequest(req, res) {
   const { username } = req.params;
   try {
     const findingUser = await findingUserInDB(username);
-    if (findingUser){ 
+    if(findingUser.length!=0){ 
       res.status(httpStatus.OK).json(findingUser)
     }
-    
+    if(findingUser==0){
     const callingAPI = await gettingDatafromAPI(username);
     if (callingAPI) {
       return res.status(httpStatus.CREATED).json(callingAPI);
     } else {
       return res.status(httpStatus.NOT_FOUND).json({ message: 'GitHub user not found' });
     }
+  }
+    
 
   } catch (error) {
     res
