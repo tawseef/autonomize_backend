@@ -19,7 +19,6 @@ async function findingUserInDB(user) {
 
 async function gettingDatafromAPI(user) {
   try {
-    console.log("gettingDatafromAPI")
     const response = await axios.get(`https://api.github.com/users/${user}`);
     if (response) return await saveInDB(response.data);
     else return null;
