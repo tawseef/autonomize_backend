@@ -20,6 +20,7 @@ async function handleGetRequest(req, res) {
       res.status(httpStatus.OK).json(findingUser)
     }
     
+    const callingAPI = await gettingDatafromAPI(username);
     if (callingAPI) {
       return res.status(httpStatus.CREATED).json(callingAPI);
     } else {
