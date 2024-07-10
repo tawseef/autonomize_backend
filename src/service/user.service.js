@@ -8,8 +8,10 @@ const { callFriendApi } = require("./friend.service");
 async function findingUserInDB(user) {
   try {
     const response = await User.findOne({ login: user });
-    if (response) return response;
-    else return false;
+    if (response) {
+      return response
+    }
+    return null;
   } catch (error) {
     throw error;
   }
