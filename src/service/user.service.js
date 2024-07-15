@@ -19,7 +19,7 @@ async function findingUserInDB(user) {
 
 async function gettingDatafromAPI(user) {
   try {
-    const response = await axios.get(`https://api.github.com/users/${user}`);
+    const response = await axios.get(`https://api.github.com/users/${user}`);  
     if (response) return await saveInDB(response.data);
     else return null;
   } catch (error) {
